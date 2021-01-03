@@ -1,0 +1,39 @@
+name: CI Tests Except Main
+
+on:
+  push:
+    branches:
+      - '!main'
+
+      
+jobs:
+  test-on-ubuntu:
+
+    name: Run tests
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: yarn
+    - run: yarn test
+      env:
+        CI: true
+    - run: yarn run report-coverage
+
+    # Create key here https://codecov.io
+    # Add CODECOV_TOKEN to Github Secret: 
+    # https://github.com/${organization}/${repository}/settings/secrets
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.lcov
+        fail_ci_if_error: true

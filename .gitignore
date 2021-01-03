@@ -1,0 +1,16 @@
+# dependencies
+**/node_modules/
+**/examples/**/yarn.lock
+**/examples/**/*.log
+
+# test outputs
+**/.nyc_output
+**/coverage/
+**/coverage.lcov
+
+# build output
+**/dist/
+
+# misc
+**/.DS_Store
+**/yarn-error.log

@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "declaration": true,
+    "sourceMap": true,
+    "esModuleInterop": true
+  },
+  "include": ["example.ts"]
+}
