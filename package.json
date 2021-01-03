@@ -1,6 +1,6 @@
 {
   "name": "@ehosick/structured-messaging",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Enable config-core configuration and settings to load from yaml files.",
   "author": {
     "name": "Eric Hosick",
